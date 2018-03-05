@@ -1,0 +1,62 @@
+Dataset preparation pipeline:
+-----------------------------
+
+For text (Wikipedia, BBC, France 24, Euronews, COP'21):
+	Text processing:
+	1. download Wikipedia pages in HTML (usually it should contain HTML pages with images in a folder)
+	2. extract text from HTML by using Justext toolkit (visit their website to learn about Justext and the installation process)
+	3. do the unicode (utf8), unicode character, and punctuation normalization of the text
+	4. generally text are in paragraphs, convert them into lines (it depends on our requirement)
+	5. do tokenization (to identify different items, e.g. words, stop words, etc.)
+	6. detect multiword expressions, and named entities
+	7. convert the text into XML format (for better processing)
+	8. do lemmatization (to reduce the sparcity)
+	9. POS-tagging (to understand the semantic value)
+	10. sense-tagging (for better understanding of the semantic value of each word in the text)
+
+	Text feature collection:
+	1. character count
+	2. character position
+	3. n-gram, DCToW (Discrete Cosine Transform of Words)
+
+For images (Google Image, Reuter Image):
+
+	Image processing:
+	1. collecting image URLs
+	2. convert them into HTML format
+	3. tag the images (for example, Angela Markel, Donald Trump, etc.)
+	
+	Image feature collection:
+		Intrinsic / word string embedding / unsupervised:
+		1. BSM (Blurred Shape Model) [Escalera et al., 2009]
+		2. LBP (Local Binary Patterns) [Dey et al., 2016]
+		3. SIFT (Scale Invariant Feature Transform) [Lowe, 2004]
+		4. HOG (Histogram of Oriented Gradients)
+		5. PHOC (Pyramidal Histogram Of Characters) [Almazan et al., 2014]
+		6. SPHOC (Spatial Pyramid Of Characters) []
+		7. BoVW (Bag of Visual Words)
+		8. POG (Projections of Oriented Gradients)
+		9. ZAH (Zoning Aggregating Hypercolumns)
+
+		Extrinsic / handcrafted / supervised:
+		1. (like text)
+
+For INA, YouTube:
+	Video processing:
+	1. download videos
+	2. tag the images (for example, Angela Markel, Donald Trump, etc.)
+	3. convert them into HTML format
+	
+	Image feature collection:
+		Intrinsic / word string embedding / unsupervised:
+		1. (like images)
+
+		Extrinsic / handcrafted / supervised:
+		1. (like text)
+
+	Audio processing:
+	1. acoustic feature collection (by using HTK toolkit)
+	2. convert phonemes into text (by using HTK toolkit)
+
+	Feature collection:
+	1. (like text)
