@@ -3,16 +3,21 @@ Dataset preparation pipeline:
 
 For text (Wikipedia, BBC, France 24, Euronews, COP'21):
 	Text processing:
-	1. download Wikipedia pages in HTML (usually it should contain HTML pages with images in a folder)
-	2. extract text from HTML by using Justext toolkit (visit their website to learn about Justext and the installation process)
-	3. do the unicode (utf8), unicode character, and punctuation normalization of the text
-	4. generally text are in paragraphs, convert them into lines (it depends on our requirement)
-	5. do tokenization (to identify different items, e.g. words, stop words, etc.)
-	6. detect multiword expressions, and named entities
-	7. convert the text into XML format (for better processing)
-	8. do lemmatization (to reduce the sparcity)
-	9. POS-tagging (to understand the semantic value)
-	10. sense-tagging (for better understanding of the semantic value of each word in the text)
+	1. download Wikipedia pages in HTML (usually it should contain HTML pages with images in a folder) [tool: wget]
+	2. extract text from HTML (visit their website to learn about Justext and the installation process) [tool: Justext]
+	3. normalization:
+		a) character normalization:
+			i) do the unicode (utf8) character encoding [tool: iconv]
+			ii) do unicode character normalization [tool: NDF (Canonical decomposed character form)]
+		b) punctuation normalization [tool: Moses]
+	4. generally text are in paragraphs, convert them into lines (it depends on our requirement) [tool: script]
+	5. do tokenization (to identify different items, e.g. words, stop words, etc.) [tool: NLTK]
+	6. detect multiword expressions, and named entities [tool: NLTK]
+	7. do true casing (in order to avaoid small and capital letter detection problem) [tool: Moses]
+	8. do lemmatization (to reduce the sparcity) [tool: NLTK]
+	9. POS-tagging (to understand the semantic value) [tool: NLTK]
+	10. convert the text into XML format (for better processing) [tool: Python script]
+	11. sense-tagging (for better understanding of the semantic value of each word in the text) [OPTIONAL]
 
 	Text feature collection:
 	1. character count
